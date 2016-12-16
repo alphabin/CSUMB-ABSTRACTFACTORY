@@ -3,17 +3,17 @@ import urllib
 import java.lang
 import time
 
-
-
+firstvisit = 0
+introcanvas = ""
 def getOS():
-	os = ""
-	ver = sys.platform.lower()
-	ver = java.lang.System.getProperty("os.name").lower()
-	if ver.startswith('mac'):
-		os = "mac"
-	if ver.startswith('win'):
-		os = "win"
-	return os
+    os = ""
+    ver = sys.platform.lower()
+    ver = java.lang.System.getProperty("os.name").lower()
+    if ver.startswith('mac'):
+      os = "mac"
+    if ver.startswith('win'):
+      os = "win"
+    return os
 
 
 def getMedia(mediaType, fileName):
@@ -40,18 +40,33 @@ def getMedia(mediaType, fileName):
 	return myMedia
  
 def intro():
+    global firstvisit
+    userName = requestString("Hello, What do you call yourself?")      
+    if (userName == " "  ):
+      userName = "Lonely"
+    return userName
+
+def introChoice():
+    fistState = true
+    while(fistState == true):
+      choice = requestString("What is your choice?")       
+      if (choice == "p" or choice == "P"):     
+         fistState = false      
+      elif (choice == "i" or choice == "I"):
+         introCanvas=getMedia("img","info5") 
+         fistState = false 
+      else :
+         fistState = true 
+    return introCanvas          
+
+def gameEngine(): 
     introSong=getMedia("wav","intro1")
     introCanvas=getMedia("img","menu")
-    select = false
-    while (select == false):
-      play(introSong)
-      show(introCanvas)
-    
-
-
-
-def gameEngine():
-    intro() 
-         
-         
+    show(introCanvas)
+    play(introSong)
+    name=intro()
+    introCanvas=introChoice()        
+    repaint(introCanvas)
+    introCanvas=getMedia("img","menu")
+    repaint(introCanvas)
          

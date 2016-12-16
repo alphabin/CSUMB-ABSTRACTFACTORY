@@ -39,10 +39,19 @@ def getMedia(mediaType, fileName):
 		myMedia = makeSound(tempFilePath)
 	return myMedia
  
- 
+def intro():
+    introSong=getMedia("wav","intro1")
+    introCanvas=getMedia("img","menu")
+    select = false
+    while (select == false):
+      play(introSong)
+      show(introCanvas)
+    
+
+
+
 def gameEngine():
-         introSong=getMedia("wav","intro1")
-         play(introSong)
+    intro() 
          
          
          

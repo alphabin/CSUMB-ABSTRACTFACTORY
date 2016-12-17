@@ -59,7 +59,7 @@ def playGame():
   file1 = getMedia("img","NEWboard")
   file2 = getMedia("img","NEWguess")
   file3 = getMedia("img","win")
-  file4 = getMedia("img","loose")
+  file4 = getMedia("img","lose")
   
   
   boardorig = file1
@@ -103,10 +103,10 @@ def playGame():
   board = copy(board,file1)
   repaint(board)
  
-  while count < 8:
+  while count < 5:
     
-    showInformation(str(yCoordinate) + " " + str(xCoordinate))
- 
+    #showInformation(str(yCoordinate) + " " + str(xCoordinate))
+    print("CHEAT::"+ str(yCoordinate)+","+str(xCoordinate)+":::CHEAT")
     guess_y = int(requestString("Guess Row:"))
     guess_x = int(requestString("Guess Col:"))
     play(soungStart)
@@ -133,7 +133,7 @@ def playGame():
     board = copy(board, win)
     repaint(board)
   else:
-    looseSound = getMedia("wav","loose1")
+    looseSound = getMedia("wav","lose1")
     play(looseSound)
     board = copy(board, lose)
     repaint(board)
@@ -242,7 +242,7 @@ def introChoice():
       elif (choice == "i" or choice == "I"):         
          fistState = false 
          i="Y"
-         board=copy(board,getMedia("img","NEWinfo"))
+         board=copy(board,getMedia("img","info5"))
       else :
          fistState = true  
          i="Z"
